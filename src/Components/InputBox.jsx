@@ -6,12 +6,13 @@ function InputBox({
     amount,
     onAmountChange,
     onCurrencyChange,
-    currencyOption= [],
+    currencyOptions= [],
     selectCurrency = "usd",
     amoutDisable = false,
     currencyDisable = false,
     className="",
 }) {
+
     // useId hook
    const amountInputId = useId()
 
@@ -25,10 +26,11 @@ function InputBox({
              mb-2 inline-block'
              >{label}</label>
 
-             <input type="number"
+             <input 
              id={amountInputId}
              className='outline-none w-full
              bg-transparent py-1.5'
+             type="number"
              placeholder='Amount'
              disabled={amoutDisable}
              value={amount}
@@ -37,6 +39,7 @@ function InputBox({
              />
              
             </div>
+
             <div className="w-1/2 flex flex-wrap justify-end text-right">
                 <p className="text-black/40 mb-2 w-full">Currency Type</p>
                 <select
@@ -48,17 +51,18 @@ function InputBox({
                       onCurrencyChange(e.target.value)}
                       disabled={currencyDisable}
                 >
-                    {/* remember the key in loops react */}
-                    {currencyOption.map((currency)=>{
+                    {currencyOptions.map((currency)=>(
                         <option key={currency} value={currency}>
                           {currency}
                     </option>
-                    })}
+                    ))}
                 
                 </select>
             </div>
 
         </div>
+
+        
     </>
   )
 }
