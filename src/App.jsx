@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { InputBox } from './Components'
 import useCurrencyInfo from './hooks/useCurrencyInfo'
+import './App.jsx'
 
 
 function App() {
@@ -12,11 +13,7 @@ function App() {
   const currencyInfo = useCurrencyInfo(from)
     
   const option = Object.keys(currencyInfo)
-
-//   console.log(option);
-
-  console.log();
-
+  
   const swap = () =>{
     setFrom(to)
     setTo(from)
@@ -29,16 +26,16 @@ function App() {
   }
   return (
     <div
-    className="w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat"
+    className="w-full h-screen flex justify-center items-center bg-cover bg-no-repeat"
     style={{
-        backgroundImage: `url('https://images.pexels.com/photos/3532540/pexels-photo-3532540.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')`,
+        backgroundImage: `url('https://static.vecteezy.com/system/resources/thumbnails/000/696/278/small/textured-black-background.jpg')`,
     }}
 >
-    <div className="w-full">
+    <div className="w-full box">
         <div className="w-full max-w-md mx-auto
          border border-gray-60 rounded-lg p-5
-          backdrop-blur-sm bg-white/30">
-            <form
+          backdrop-blur-sm bg-white/30 bg-red-100">
+            <form 
                 onSubmit={(e) => {
                     e.preventDefault();
                     convert()
@@ -54,6 +51,8 @@ function App() {
                         selectCurrency={from}
                         onAmountChange={(amount) => setAmount(amount)}
                     />
+
+
                 </div>
                 <div className="relative w-full h-0.5">
                     <button
@@ -72,9 +71,10 @@ function App() {
                         amount={convertedAmount}
                         currencyOptions={option}
                         onCurrencyChange={(currency) => setTo(currency)}
-                        selectCurrency={from}
+                        selectCurrency={to}
                         amountDisable
                     />
+                    
                 </div>
                 <button type="submit"
                  className="w-full bg-blue-600
@@ -89,3 +89,5 @@ function App() {
 }
 
 export default App
+
+
